@@ -10,6 +10,7 @@ namespace UserRegAnnotation
         UserAnnotationFields annotationFields = new UserAnnotationFields();
         public void ValidateUser()
         {
+            //Read input from user and store it in object
             
             Console.Write("Enter first name :");
             annotationFields.firstName = Console.ReadLine();
@@ -26,12 +27,16 @@ namespace UserRegAnnotation
 
         public void ValidateUserAnnotationFields()
         {
+            //validate object
             ValidationContext validationContext = new ValidationContext(annotationFields, null, null);
+            //List for error messages
             List<ValidationResult> validationResults = new List<ValidationResult>();
+            //return whether validation is correct or not
             bool isValid = Validator.TryValidateObject(annotationFields, validationContext, validationResults, true);
 
             if (!isValid)
             {
+                //if invalid print error messages
                 foreach (ValidationResult validationResult in validationResults)
                 {
                     Console.WriteLine(validationResult.ErrorMessage);
