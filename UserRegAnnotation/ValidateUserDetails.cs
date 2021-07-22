@@ -5,9 +5,19 @@ using System.ComponentModel.DataAnnotations;
 namespace UserRegAnnotation
 {
    
-    class ValidateUserDetails
+    public class ValidateUserDetails
     {
+        public string message;
         UserAnnotationFields annotationFields = new UserAnnotationFields();
+
+        public ValidateUserDetails(string message)
+        {
+            this.message = message;
+        }
+        public ValidateUserDetails()
+        {
+            
+        }
         public void ValidateUser()
         {
             //Read input from user and store it in object
